@@ -1,0 +1,81 @@
+openapi: '3.0.2'
+info:
+  title: Customer API
+  version: '1.0'
+servers:
+  - url: https://localhost:8080/customer
+
+tags:
+  - name: Customer API
+
+paths:
+  /customer:
+    post:
+      description: create customer information update
+      operationId: createCustomer
+      tags:
+        - "Customer API"
+      requestBody:
+         content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '500':
+          description: Internal Server Error
+  /customer/{id}:
+      get:
+        description: Get/Fetch Customer Details
+        operationId: getCustomer
+        parameters:
+          - name: id
+            in: path
+            description: findCustomer
+            required: true 
+            schema:
+              type: string
+        tags:
+          - "Customer API"
+        responses:
+          '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Customer'
+          '404':
+            description: Not Found
+          '400':
+            description: Invalid Request
+          '500':
+            description: Internal Server Error
+
+components:
+  schemas:
+    Customer:
+      description: This is a customer schema/attributes
+      type: object
+      required:
+        - "customerId"
+      properties:
+        customerId:
+          type: string
+          description: This is the customer id
+          example: 12345
+          minLength: 5
+          maxLength: 8
+        customerName:
+          type: string
+          example: Jessica
+          description: This is customer name 
+        custoemrAdress:
+          type: string
+          example: Hartford,CT
+          description: This is customer address
+                  
