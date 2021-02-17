@@ -1,0 +1,78 @@
+openapi: '3.0.2'
+info:
+  title: openShift Training APIs
+  version: '1.0'
+servers:
+  - url: https://localhost:8080/v1/customer
+
+
+tags:
+  - name: Customer API
+
+paths:
+  /customer:
+    post:
+      description: create customer information
+      operationId: createCustomer
+      tags:
+        - 'Customer API'
+      requestBody: 
+        content:
+         application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '500':
+          description: Internal Server Error
+  /customer/{id}:
+    get:
+      description: Get Customer Details
+      operationId: getCustomer
+      parameters:
+        - name: id
+          in: path
+          description: ID of the Customer
+          required: true
+          schema:
+            type: string
+      tags:
+        - 'Customer API'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '404':
+          description: Customer Not Found
+        '400':
+          description: Invalid Request
+        '500':
+          description: Internal Server Error
+components:
+  schemas:
+    Customer:
+      description: Customer Schema & attributes
+      type: object
+      required:
+        - "customerId"
+      properties:
+        customerId:
+          type: string
+          description: Customer Id
+          example: CRN000000001
+          minLength: 8
+          maxLength: 12
+        customerName:
+          type: string
+          description: Full name of the customer
+          example: Bill Gates
+          minLength: 1
+          maxLength: 40
