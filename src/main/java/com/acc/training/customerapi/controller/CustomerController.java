@@ -27,7 +27,14 @@ public class CustomerController implements CustomerApi {
 
     @Override
     public ResponseEntity<Customer> getCustomer(String id) {
+        
+        // TODO: Add logic to validate customer ID
+        
         Customer result = service.getCustomer(id);
+        
+        if(result==null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
     
