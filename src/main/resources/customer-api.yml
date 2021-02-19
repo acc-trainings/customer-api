@@ -73,7 +73,7 @@ components:
           type: string
           example: Jessica
           description: This is customer name
-        customeraddress:
+        customerAddress:
           type: string
           example: Hartford, CT
           description: This is customer address
