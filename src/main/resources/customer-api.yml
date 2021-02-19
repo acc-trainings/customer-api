@@ -67,15 +67,15 @@ components:
         customerId:
           type: string
           description: This is the customer id
-          example: 12345
-          minLength: 5
-          maxLength: 8
+          example: 123456
+          minLength: 6
+          maxLength: 10
         customerName:
           type: string
           example: Jessica
           description: This is customer name 
         custoemrAdress:
           type: string
-          example: Hartford,CT
+          example: Florham Park, NJ
           description: This is customer address
                   

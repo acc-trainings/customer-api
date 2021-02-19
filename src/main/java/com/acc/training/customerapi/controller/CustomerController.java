@@ -29,8 +29,15 @@ public class CustomerController implements CustomerApi {
     public ResponseEntity<Customer> getCustomer(String id) {
 
         //TODO: add logic to validate logic for customer id
-        
+
+        if (id.length() <= 6 || id.length() >= 10 || id.isEmpty())
+        {
+            return ResponseEntity.status(HttpStatus.LENGTH_REQUIRED).build();
+        }
+
         Customer result = service.getCustomer(id);
+
+        
 
         if(result == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
