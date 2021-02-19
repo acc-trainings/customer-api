@@ -1,0 +1,85 @@
+openapi: '3.0.2'
+info:
+  title: Customer API
+  version: '1.0'
+servers:
+  - url: https://localhost:8080/customer
+
+tags:
+  - name: Customer API
+paths:
+  /customer:
+    post:
+      description: create customer information
+      operationId: createCustomer
+      tags:
+        - Customer API
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/customer"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/customer"
+        '500':
+          description: Internal Server Error
+  /customer/{id}:
+    get:
+      description: Get/Fetch Customer details
+      operationId: getCustomer
+      parameters:
+        - name: id
+          in: path
+          description: findCustomer
+          required: true
+          schema:
+            type: string
+      tags:
+      - "Customer API"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/customer"
+        '404':
+          description: Not found
+        '400':
+          description: Invalid Request
+        '500':
+          description: Internal Server Error
+
+components:
+  schemas:
+    customer:
+      description: This is a customer schema/attributes
+      type: object
+      required:
+        - "customerId"
+      properties:
+        customerId: 
+          type: string  
+          description: This is customer id
+          example: 12345
+          minimum: 5
+          maximum: 8
+        customerName:  
+          type: string
+          example: Jessica
+          description: This is customer name
+        customeraddress:
+          type: string
+          example: Hartford, CT
+          description: This is customer address
+
+
+
+
+
+
