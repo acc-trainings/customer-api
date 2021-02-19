@@ -20,7 +20,7 @@ public class CustomerRepository {
         Customer cust1 = new Customer();
         cust1.setCustomerId("12345");
         cust1.setCustomerName("Rahul Anand");
-        cust1.setCustoemrAdress("Hartford, CT");
+        cust1.customerAdress("Hartford, CT");
 
         customerMap.put("12345", cust1);
     }
