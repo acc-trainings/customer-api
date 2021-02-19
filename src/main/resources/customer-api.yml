@@ -76,3 +76,9 @@ components:
           example: Bill Gates
           minLength: 1
           maxLength: 40
+        customerAddress:
+          type: string
+          description: Full address of the customer
+          example: 123 Capitol Hill, Washington DC, USA
+          minLength: 1
+          maxLength: 200

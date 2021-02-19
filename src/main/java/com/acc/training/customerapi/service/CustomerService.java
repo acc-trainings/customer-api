@@ -2,6 +2,7 @@ package com.acc.training.customerapi.service;
 
 import javax.validation.Valid;
 
+import com.acc.training.customerapi.domain.CustomerDomain;
 import com.acc.training.customerapi.model.Customer;
 import com.acc.training.customerapi.repository.CustomerRepository;
 
@@ -15,11 +16,28 @@ public class CustomerService {
     private CustomerRepository repo;
 
 	public Customer createCustomer(@Valid Customer body) {
-		return repo.addCustomer(body);
+		CustomerDomain customerDomain = mapModelToDomain(body);
+        return mapDomainToModel(repo.save(customerDomain));
 	}
 
+    private CustomerDomain mapModelToDomain(Customer body) {
+        CustomerDomain customerDomain = new CustomerDomain();
+        customerDomain.setId(body.getCustomerId());
+        customerDomain.setCustomerId(body.getCustomerId());
+        customerDomain.setCustomerName(body.getCustomerName());
+        customerDomain.setCustomerAddress(body.getCustomerAddress());
+        return customerDomain;
+    }
+
+    private Customer mapDomainToModel(CustomerDomain body) {
+        Customer customer = new Customer();
+        customer.setCustomerId(body.getCustomerId());
+        customer.setCustomerName(body.getCustomerName());
+        customer.setCustomerAddress(body.getCustomerAddress());
+        return customer;
+    }
+
 	public Customer getCustomer(String id) {
-		return repo.getCustomer(id);
+		return mapDomainToModel(repo.findByCustomerId(id));
 	}
-    
 }
