@@ -30,7 +30,7 @@ public class CustomerController implements CustomerApi {
 
         //TODO: add logic to validate logic for customer id
 
-        if (id.length() <= 6 || id.length() >= 10 || id.isEmpty())
+        if (id.length() < 6 || id.length() >= 10 || id.isEmpty())
         {
             return ResponseEntity.status(HttpStatus.LENGTH_REQUIRED).build();
         }

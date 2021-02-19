@@ -18,11 +18,11 @@ public class CustomerRepository {
 
     private static void initCustomer() {
         Customer cust1 = new Customer();
-        cust1.setCustomerId("12345");
+        cust1.setCustomerId("123456");
         cust1.setCustomerName("Chaitanya");
         cust1.setCustoemrAdress("New Jersey");
 
-        customerMap.put("12345", cust1);
+        customerMap.put("123456", cust1);
     }
 
     public Customer getCustomer(String custId){
