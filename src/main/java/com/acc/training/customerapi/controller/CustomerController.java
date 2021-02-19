@@ -21,6 +21,7 @@ public class CustomerController implements CustomerApi {
     public ResponseEntity<Customer> createCustomer(@Valid Customer body) {
 
         Customer result = service.createCustomer(body);
+        
 
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
@@ -30,8 +31,10 @@ public class CustomerController implements CustomerApi {
 
         //TODO: add logic to validate logic for customer id
 
+        //if length is less than 6 or greater than 10 or id is empty return length require error.
         if (id.length() < 6 || id.length() >= 10 || id.isEmpty())
         {
+            //System.out.println(HttpStatus.LENGTH_REQUIRED);
             return ResponseEntity.status(HttpStatus.LENGTH_REQUIRED).build();
         }
 

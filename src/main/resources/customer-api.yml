@@ -55,6 +55,8 @@ paths:
             description: Invalid Request
           '500':
             description: Internal Server Error
+          '411':
+            description: Invalid length id
 
 components:
   schemas:
@@ -74,7 +76,7 @@ components:
           type: string
           example: Jessica
           description: This is customer name 
-        custoemrAdress:
+        customerAdress:
           type: string
           example: Florham Park, NJ
           description: This is customer address
