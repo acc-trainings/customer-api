@@ -89,7 +89,7 @@ stages {
             git config --global user.email "acctrainings3@gmail.com"
             git config --global user.name "acctrainings3"
             '''
-            sh 'git clone --branch main https://${username}:${password}@github.com/acc-trainings/customer-api-configrepo.git masterconfigyaml'
+            sh 'git clone --branch customer-api-configrepo-vincentf https://${username}:${password}@github.com/acc-trainings/customer-api-configrepo.git masterconfigyaml'
             sh 'pwd'
             sh '''
             sed "s/%%IMG_TAG%%/${SNP_IMG_TAG}/g" "${WORKSPACE}/Deployment/appdeploy.yaml" > "${WORKSPACE}/masterconfigyaml/appdeploy.yaml"
