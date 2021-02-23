@@ -6,7 +6,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: customer-api-inital
+  name: customer-api-laxmi
 data:
   #spring.profiles.active: local
   spring.data.mongodb.uri: mongodb+srv://demo123:demo123@acctrainings.dntd4.mongodb.net/db-acc-trainings?retryWrites=true&w=majority
@@ -16,44 +16,44 @@ data:
 apiVersion: v1
 kind: Service
 metadata:
-  name: customer-api-inital
-  namespace: "acctrainings-initial"
+  name: customer-api-laxmi
+  namespace: "acctrainings-laxmi"
   labels:
-    app: customer-api-inital
-    service: customer-api-inital
+    app: customer-api-laxmi
+    service: customer-api-laxmi
 spec:
   ports:
   - port: 8080
     name: http
   selector:
-    app: customer-api-inital-node
+    app: customer-api-laxmi-node
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: customer-api-inital
+  name: customer-api-laxmi
   labels:
-    app: customer-api-inital
+    app: customer-api-laxmi
     version: v1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: customer-api-inital-node
+      app: customer-api-laxmi-node
       version: v1
   template:
     metadata:
       labels:
-        app: customer-api-inital-node
+        app: customer-api-laxmi-node
         version: v1
     spec:
       containers:
-      - name: customer-api-inital-node
+      - name: customer-api-laxmi-node
         image: quay.io/acctrainings/customer-api:%%IMG_TAG%%
         imagePullPolicy: IfNotPresent
         envFrom:
           - configMapRef:
-              name: customer-api-inital
+              name: customer-api-laxmi
         ports:
         - containerPort: 8080
         env:
@@ -64,14 +64,14 @@ spec:
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: acustomer-api-inital
-  namespace: "acctrainings-initial"
+  name: customer-api-laxmi
+  namespace: "acctrainings-laxmi"
   labels:
-    app: customer-api-inital
+    app: customer-api-laxmi
 spec:
   to:
     kind: Service
-    name: customer-api-inital
+    name: customer-api-laxmi
 status:
   ingress:
   - conditions:
