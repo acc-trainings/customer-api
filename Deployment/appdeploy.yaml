@@ -17,7 +17,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: customer-api-chaitanya
-  namespace: " acctrainings-chaitanya"
+  namespace: "acctrainings-chaitanya"
   labels:
     app: customer-api-chaitanya
     service: customer-api-chaitanya
@@ -65,7 +65,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: customer-api-chaitanya
-  namespace: " acctrainings-chaitanya"
+  namespace: "acctrainings-chaitanya"
   labels:
     app: customer-api-chaitanya
 spec:
