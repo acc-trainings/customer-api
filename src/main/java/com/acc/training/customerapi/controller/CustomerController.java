@@ -23,7 +23,6 @@ public class CustomerController implements CustomerApi {
 
     @Override
     public ResponseEntity<Customer> createCustomer(@Valid Customer body) {
-        // TODO Auto-generated method stub
         //There was an inital error when importing dependencies from the yaml file the request body was nested incorrectly, this method intially took in a string instead of a customer object
 
         Customer result = service.createCustomer(body);
@@ -33,7 +32,6 @@ public class CustomerController implements CustomerApi {
 
     @Override
     public ResponseEntity<Customer> getCustomer(String id) {
-        // TODO Auto-generated method stub
 
         Customer result = service.getCustomer(id);
 
