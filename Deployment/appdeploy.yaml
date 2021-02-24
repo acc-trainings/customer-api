@@ -64,7 +64,7 @@ spec:
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: acustomer-api-carlos
+  name: customer-api-carlos
   namespace: "acctrainings-carlos"
   labels:
     app: customer-api-carlos
