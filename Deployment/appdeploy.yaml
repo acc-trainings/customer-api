@@ -9,7 +9,7 @@ metadata:
   name: customer-api-carlos
 data:
   #spring.profiles.active: local
-  spring.data.mongodb.uri: mongodb+srv://demo123:demo123@acctrainings.dntd4.mongodb.net/db-acc-trainings?retryWrites=true&w=majority
+  spring.data.mongodb.uri: mongodb+srv://demo123:demo123@acctrainings.jsax1.mongodb.net/db-acc-trainings?retryWrites=true&w=majority
   spring.data.mongodb.database: db-acc-trainings
   #datastore.mongodb.collection.name: customer-coll-local
 ---
